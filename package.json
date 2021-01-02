@@ -1,0 +1,10 @@
+{
+  "name": "diep.io",
+  "scripts": {
+    "start": "node src/server.js",
+    "coffee": "coffee -o src/ -cw coffee/"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
