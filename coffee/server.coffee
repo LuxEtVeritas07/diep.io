@@ -1,9 +1,15 @@
-express=require "express"
-app=express()
-port=8080
+app = require("express")()
+http = require("http").createServer app
+io = require("socket.io") http,{cors:{origin:"*"}}
 
-app.use express.static "#{__dirname}/public"
+app.get "/", (req, res) ->
+	res.sendFile "#{__dirname}/index.html"
+	return
 
-app.listen port, ()->
-	console.log "Example app listening at http://localhost:#{port}"
+io.on "connection", (socket) ->
+	console.log "a user connected"
+	return
+
+http.listen 8081, ()->
+	console.log "listening on *:8081"
 	return
