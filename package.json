@@ -1,7 +1,6 @@
 {
   "name": "diep.io",
   "scripts": {
-    "server": "node src/server.js",
     "coffee": "coffee -o src/ -cw coffee/",
     "start": "cd src/client && webpack serve"
   },

@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js'
 import io from 'socket.io-client'
+import tanks from "./../public/assets/tanks.json"
 
 socket = io ":8081"
 
@@ -15,33 +16,66 @@ app = new PIXI.Application
 	height: window.innerHeight
 	backgroundColor: 0x1099bb
 	resolution: window.devicePixelRatio or 1
+
 app.renderer.autoResize = true
 document.body.appendChild app.view
-container = new PIXI.Container
 
-app.stage.addChild container
 
-# Create a new texture
-texture = PIXI.Texture.from 'assets/troll.png'
+class Tanks
+	constructor:(tanks)->
+		@tanks=tanks.tanks
+		@types=tanks.types
+		return
+	Tank:(name,radius)->
+		tank=@tanks[name]
+		if tank is undefined
+			console.error "Nie ma takiego czołgu!"
+		container=new PIXI.Container
 
-# Create a 5x5 grid of bunnies
-for i in [0..24]
-	bunny = new PIXI.Sprite texture
-	bunny.anchor.set 0.5
-	bunny.x = (i % 5) * 40
-	bunny.y = Math.floor(i / 5) * 40
-	container.addChild bunny
 
-# Move container to the center
-container.x = app.screen.width / 2
-container.y = app.screen.height / 2
+		for i in tank.addDowns
+			if i.type is "rectangle"
+				graphics=new PIXI.Graphics
+				graphics.lineStyle 3, 0x5B6465
+				graphics.beginFill 0x97989A
+				graphics.drawRect i.offset[0]*radius-i.width/2*radius, i.offset[1]*radius-i.height/2*radius, i.width*radius, i.height*radius
+				graphics.endFill()
+				graphics.rotation=i.rotation/180*Math.PI
+				container.addChild graphics
+			else if @types[i.type] isnt undefined
+				graphics=new PIXI.Graphics
+				graphics.lineStyle 3, 0x5B6465
+				graphics.beginFill 0x97989A
+				p=true
+				for j in @types[i.type]
+					if p
+						p=false
+						graphics.moveTo j[0]*radius,j[1]*radius
+					else
+						graphics.lineTo j[0]*radius,j[1]*radius
+					console.log j
+				graphics.closePath()
+				graphics.endFill()
+				graphics.rotation=i.rotation/180*Math.PI
+				container.addChild graphics
+		if tank.shape is "circle"
+			graphics=new PIXI.Graphics
+			graphics.lineStyle 3, 0x5B6465
+			graphics.beginFill 0x4BB6E0, 1
+			graphics.drawCircle 0,0,radius
+			graphics.endFill()
+			container.addChild graphics
+		else if tank.shape is "rectangle"
+			graphics=new PIXI.Graphics
+			graphics.lineStyle 3, 0x5B6465
+			graphics.beginFill 0x4BB6E0, 1
+			graphics.drawRect -radius,-radius,radius*2,radius*2
+			graphics.endFill()
+			container.addChild graphics
+		return container
+T=new Tanks tanks
 
-# Center bunny sprite in local container coordinates
-container.pivot.x = container.width / 2
-container.pivot.y = container.height / 2
+player=T.Tank "necromancer",50
 
-# Listen for animate update
-app.ticker.add (delta)->
-	# rotate the container!
-	# use delta to create frame-independent transform
-	container.rotation -= 0.01 * delta;
+player.position.set window.innerWidth/2, window.innerHeight/2
+app.stage.addChild player
