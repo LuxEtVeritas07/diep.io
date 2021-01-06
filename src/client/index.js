@@ -20,10 +20,9 @@ app = new PIXI.Application({
   width: window.innerWidth,
   height: window.innerHeight,
   backgroundColor: 0x1099bb,
-  resolution: window.devicePixelRatio || 1
+  resolution: window.devicePixelRatio,
+  autoResize: true
 });
-
-app.renderer.autoResize = true;
 
 document.body.appendChild(app.view);
 
@@ -54,8 +53,13 @@ Tanks = class Tanks {
         container.addChild(graphics);
       } else if (this.types[i.type] !== void 0) {
         graphics = new PIXI.Graphics();
-        graphics.lineStyle(3, 0x5B6465);
-        graphics.beginFill(0x97989A);
+        if (i.bg === "black") {
+          graphics.lineStyle(1, 0x5B6465);
+          graphics.beginFill(0x5B6465);
+        } else {
+          graphics.lineStyle(3, 0x5B6465);
+          graphics.beginFill(0x97989A);
+        }
         p = true;
         ref1 = this.types[i.type];
         for (l = 0, len1 = ref1.length; l < len1; l++) {
@@ -96,7 +100,11 @@ Tanks = class Tanks {
 
 T = new Tanks(tanks);
 
-player = T.Tank("necromancer", 50);
+player = T.Tank("factory", 50);
+
+app.ticker.add(function(delta) {
+  player.rotation -= 0.01 * delta;
+});
 
 player.position.set(window.innerWidth / 2, window.innerHeight / 2);
 

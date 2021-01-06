@@ -15,9 +15,9 @@ app = new PIXI.Application
 	width: window.innerWidth
 	height: window.innerHeight
 	backgroundColor: 0x1099bb
-	resolution: window.devicePixelRatio or 1
+	resolution: window.devicePixelRatio
+	autoResize: true
 
-app.renderer.autoResize = true
 document.body.appendChild app.view
 
 
@@ -44,8 +44,13 @@ class Tanks
 				container.addChild graphics
 			else if @types[i.type] isnt undefined
 				graphics=new PIXI.Graphics
-				graphics.lineStyle 3, 0x5B6465
-				graphics.beginFill 0x97989A
+
+				if i.bg is "black"
+					graphics.lineStyle 1, 0x5B6465
+					graphics.beginFill 0x5B6465
+				else
+					graphics.lineStyle 3, 0x5B6465
+					graphics.beginFill 0x97989A
 				p=true
 				for j in @types[i.type]
 					if p
@@ -75,7 +80,11 @@ class Tanks
 		return container
 T=new Tanks tanks
 
-player=T.Tank "necromancer",50
+player=T.Tank "factory",50
+
+app.ticker.add (delta)->
+	player.rotation-=0.01*delta
+	return
 
 player.position.set window.innerWidth/2, window.innerHeight/2
 app.stage.addChild player

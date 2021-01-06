@@ -1,13 +1,13 @@
 {
 	"types":{
-		"seer":[[-0.7,-1.4],[0.7,-1.4],[0,0.95]]
+		"seer":[[-0.7,-1.4],[0.7,-1.4],[0,0.95]],
+		"smash":[[-0.65,1.1245],[0.65,1.1245],[0,0]]
 	},
 	"tanks":{
 		"tank":{
 			"shape":"circle",
 			"addDowns":[
 				{
-					"scale":1,
 					"rotation":0,
 					"offset":[0,-0.8],
 					"type":"rectangle",
@@ -20,7 +20,6 @@
 			"shape":"circle",
 			"addDowns":[
 				{
-					"scale":1,
 					"rotation":0,
 					"offset":[0,-0.8],
 					"type":"rectangle",
@@ -28,7 +27,6 @@
 					"height":2
 				},
 				{
-					"scale":1,
 					"rotation":45,
 					"offset":[0,-0.8],
 					"type":"rectangle",
@@ -36,7 +34,6 @@
 					"height":2
 				},
 				{
-					"scale":1,
 					"rotation":-45,
 					"offset":[0,-0.8],
 					"type":"rectangle",
@@ -49,7 +46,6 @@
 			"shape":"circle",
 			"addDowns":[
 				{
-					"scale":1,
 					"rotation":0,
 					"offset":[0,0],
 					"type":"seer"
@@ -60,13 +56,11 @@
 			"shape":"circle",
 			"addDowns":[
 				{
-					"scale":1,
 					"rotation":0,
 					"offset":[0,0],
 					"type":"seer"
 				},
 				{
-					"scale":1,
 					"rotation":180,
 					"offset":[0,0],
 					"type":"seer"
@@ -77,25 +71,21 @@
 			"shape":"circle",
 			"addDowns":[
 				{
-					"scale":1,
 					"rotation":0,
 					"offset":[0,0],
 					"type":"seer"
 				},
 				{
-					"scale":1,
 					"rotation":180,
 					"offset":[0,0],
 					"type":"seer"
 				},
 				{
-					"scale":1,
 					"rotation":90,
 					"offset":[0,0],
 					"type":"seer"
 				},
 				{
-					"scale":1,
 					"rotation":270,
 					"offset":[0,0],
 					"type":"seer"
@@ -106,7 +96,6 @@
 			"shape":"rectangle",
 			"addDowns":[
 				{
-					"scale":1,
 					"rotation":0,
 					"offset":[0,0],
 					"type":"seer"
@@ -117,16 +106,55 @@
 			"shape":"rectangle",
 			"addDowns":[
 				{
-					"scale":1,
 					"rotation":0,
 					"offset":[0,0],
 					"type":"seer"
 				},
 				{
-					"scale":1,
 					"rotation":180,
 					"offset":[0,0],
 					"type":"seer"
+				}
+			]
+		},
+		"smasher":{
+			"shape":"circle",
+			"addDowns":[
+				{
+					"bg":"black",
+					"rotation":0,
+					"offset":[0,0],
+					"type":"smash"
+				},
+				{
+					"bg":"black",
+					"rotation":60,
+					"offset":[0,0],
+					"type":"smash"
+				},
+				{
+					"bg":"black",
+					"rotation":120,
+					"offset":[0,0],
+					"type":"smash"
+				},
+				{
+					"bg":"black",
+					"rotation":180,
+					"offset":[0,0],
+					"type":"smash"
+				},
+				{
+					"bg":"black",
+					"rotation":240,
+					"offset":[0,0],
+					"type":"smash"
+				},
+				{
+					"bg":"black",
+					"rotation":300,
+					"offset":[0,0],
+					"type":"smash"
 				}
 			]
 		}
