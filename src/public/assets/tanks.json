@@ -8,7 +8,6 @@
 			"shape":"circle",
 			"addDowns":[
 				{
-					"rotation":0,
 					"offset":[0,-0.8],
 					"type":"rectangle",
 					"width":1,
@@ -46,8 +45,6 @@
 			"shape":"circle",
 			"addDowns":[
 				{
-					"rotation":0,
-					"offset":[0,0],
 					"type":"seer"
 				}
 			]
@@ -56,13 +53,11 @@
 			"shape":"circle",
 			"addDowns":[
 				{
-					"rotation":0,
-					"offset":[0,0],
+					"rotation":90,
 					"type":"seer"
 				},
 				{
-					"rotation":180,
-					"offset":[0,0],
+					"rotation":270,
 					"type":"seer"
 				}
 			]
@@ -72,22 +67,18 @@
 			"addDowns":[
 				{
 					"rotation":0,
-					"offset":[0,0],
 					"type":"seer"
 				},
 				{
 					"rotation":180,
-					"offset":[0,0],
 					"type":"seer"
 				},
 				{
 					"rotation":90,
-					"offset":[0,0],
 					"type":"seer"
 				},
 				{
 					"rotation":270,
-					"offset":[0,0],
 					"type":"seer"
 				}
 			]
@@ -96,8 +87,6 @@
 			"shape":"rectangle",
 			"addDowns":[
 				{
-					"rotation":0,
-					"offset":[0,0],
 					"type":"seer"
 				}
 			]
@@ -106,18 +95,51 @@
 			"shape":"rectangle",
 			"addDowns":[
 				{
-					"rotation":0,
-					"offset":[0,0],
+					"rotation":90,
 					"type":"seer"
 				},
 				{
-					"rotation":180,
-					"offset":[0,0],
+					"rotation":270,
 					"type":"seer"
 				}
 			]
 		},
 		"smasher":{
+			"shape":"circle",
+			"addDowns":[
+				{
+					"bg":"black",
+					"rotation":0,
+					"type":"smash"
+				},
+				{
+					"bg":"black",
+					"rotation":60,
+					"type":"smash"
+				},
+				{
+					"bg":"black",
+					"rotation":120,
+					"type":"smash"
+				},
+				{
+					"bg":"black",
+					"rotation":180,
+					"type":"smash"
+				},
+				{
+					"bg":"black",
+					"rotation":240,
+					"type":"smash"
+				},
+				{
+					"bg":"black",
+					"rotation":300,
+					"type":"smash"
+				}
+			]
+		},
+		"auto_smasher":{
 			"shape":"circle",
 			"addDowns":[
 				{
@@ -155,6 +177,20 @@
 					"rotation":300,
 					"offset":[0,0],
 					"type":"smash"
+				}
+			],
+			"addUps":[
+				{
+					"type":"rectangle",
+					"width":0.5,
+					"height":1,
+					"offset":[0,-0.3]
+				},
+				{
+					"type":"circle",
+					"offset":[0,0],
+					"rotation":0,
+					"radius":0.4
 				}
 			]
 		}
